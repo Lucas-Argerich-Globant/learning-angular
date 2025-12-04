@@ -1,0 +1,30 @@
+<h1 class="text-lg font-bold m-4">Computed Names Page</h1>
+<section class="flex flex-col items-center gap-4">
+  <h2>Welcome: {{ decoratedName() }}</h2>
+  <div class="flex gap-4">
+    <button
+      class="cursor-pointer border border-gray-200 p-2 rounded-lg"
+      (click)="setPerson({ name: 'Matías', gender: 'male' })"
+    >
+      Matías
+    </button>
+    <button
+      class="cursor-pointer border border-gray-200 p-2 rounded-lg"
+      (click)="setPerson({ name: 'Tomás', gender: 'male' })"
+    >
+      Tomás
+    </button>
+    <button
+      class="cursor-pointer border border-gray-200 p-2 rounded-lg"
+      (click)="setPerson({ name: 'Lucía', gender: 'female' })"
+    >
+      Lucía
+    </button>
+    <button
+      class="cursor-pointer border border-gray-200 p-2 rounded-lg"
+      (click)="setPerson({ name: 'Valentina', gender: 'female' })"
+    >
+      Valentina
+    </button>
+  </div>
+</section>
