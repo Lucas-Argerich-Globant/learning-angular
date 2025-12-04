@@ -1,0 +1,33 @@
+<form [formGroup]="form">
+  <div>
+    <label>
+      Name:
+      <input type="string" formControlName="name" class="border border-gray-300" />
+    </label>
+    <label>
+      Price:
+      <input type="number" formControlName="price" class="border border-gray-300" />
+    </label>
+    <label>
+      Name:
+      <input type="number" formControlName="quantity" class="border border-gray-300" />
+    </label>
+  </div>
+</form>
+
+<section class="row mt-10">
+  <div class="col">
+    <span>Valid</span>
+    <pre>{{ form.valid | json }}</pre>
+    <span>Pristine</span>
+    <pre>{{ form.pristine | json }}</pre>
+    <span>Touched</span>
+    <pre>{{ form.touched | json }}</pre>
+    <span>Value</span>
+    <pre>{{ form.value | json }}</pre>
+    <span>Price</span>
+    <pre>{{ form.controls.price.value | json }}</pre>
+    <span>Name</span>
+    <pre>{{ form.controls.name.value | json }}</pre>
+  </div>
+</section>

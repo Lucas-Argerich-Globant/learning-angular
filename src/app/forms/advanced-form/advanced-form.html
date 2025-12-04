@@ -1,0 +1,44 @@
+<form [formGroup]="form" (submit)="save()" class="flex flex-col items-center">
+  <div class="flex gap-4">
+    <div class="flex flex-col gap-2">
+      <label for="name-input">Name:</label>
+      <input id="name-input" type="string" formControlName="name" class="border border-gray-300" />
+      @if (!formUtils.isValidField(form.controls.name)) {
+        <span class="text-red-500">{{ formUtils.getFieldError(form.controls.name) }}</span>
+      }
+    </div>
+    <div class="flex flex-col gap-2">
+      <label for="price-input">Price:</label>
+      <input id="price-input" type="number" formControlName="price" class="border border-gray-300" />
+      @if (!formUtils.isValidField(form.controls.price)) {
+        <span class="text-red-500">{{ formUtils.getFieldError(form.controls.price) }}</span>
+      }
+    </div>
+    <div class="flex flex-col gap-2">
+      <label for="quantity-input">Quantity:</label>
+      <input id="quantity-input" type="number" formControlName="quantity" class="border border-gray-300" />
+      @if (!formUtils.isValidField(form.controls.quantity)) {
+        <span class="text-red-500">{{ formUtils.getFieldError(form.controls.quantity) }}</span>
+      }
+    </div>
+  </div>
+
+  <button type="submit" class="bg-green-300 px-4 py-2 mt-4 rounded cursor-pointer">Save</button>
+</form>
+
+<section class="row mt-10">
+  <div class="col">
+    <span>Valid</span>
+    <pre>{{ form.valid | json }}</pre>
+    <span>Pristine</span>
+    <pre>{{ form.pristine | json }}</pre>
+    <span>Touched</span>
+    <pre>{{ form.touched | json }}</pre>
+    <span>Value</span>
+    <pre>{{ form.value | json }}</pre>
+    <span>Price</span>
+    <pre>{{ form.controls.price.value | json }}</pre>
+    <span>Name</span>
+    <pre>{{ form.controls.name.value | json }}</pre>
+  </div>
+</section>

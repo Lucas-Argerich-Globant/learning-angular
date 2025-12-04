@@ -1,0 +1,44 @@
+<form [formGroup]="form" (submit)="save()" class="flex flex-col items-center">
+  <div class="flex gap-4">
+    <div class="flex flex-col gap-2">
+      <label for="name-input">Name:</label>
+      <input id="name-input" type="string" formControlName="name" class="border border-gray-300" />
+      @if (!formUtils.isValidField(form.controls.name)) {
+        <span class="text-red-500">{{ formUtils.getFieldError(form.controls.name) }}</span>
+      }
+    </div>
+  </div>
+  <fieldset formArrayName="favorites">
+    <legend>Favorites</legend>
+    <button type="button" (click)="addFavorite()" class="bg-blue-300 px-4 py-2 mt-4 rounded cursor-pointer">Add Favorite</button>
+    @for (favorite of favorites.controls; track favorite) {
+      <div class="flex justify-between">
+        <div class="flex flex-col gap-2">
+          <label for="name-input">Name:</label>
+          <input id="name-input" type="string" [formControlName]="$index" class="border border-gray-300" />
+          @if (!formUtils.isValidField(favorite)) {
+            <span class="text-red-500">{{ formUtils.getFieldError(favorite) }}</span>
+          }
+        </div>
+        <button type="button" (click)="removeFavorite($index)" class="bg-red-300 px-4 py-2 mt-4 rounded cursor-pointer">Delete</button>
+      </div>
+    }
+    @if (!formUtils.isValidField(form.controls.favorites)) {
+        <span class="text-red-500">{{ formUtils.getFieldError(form.controls.favorites) }}</span>
+      }
+  </fieldset>
+  <button type="submit" class="bg-green-300 px-4 py-2 mt-4 rounded cursor-pointer">Save</button>
+</form>
+
+<section class="row mt-10">
+  <div class="col">
+    <span>Valid</span>
+    <pre>{{ form.valid | json }}</pre>
+    <span>Pristine</span>
+    <pre>{{ form.pristine | json }}</pre>
+    <span>Touched</span>
+    <pre>{{ form.touched | json }}</pre>
+    <span>Value</span>
+    <pre>{{ form.value | json }}</pre>
+  </div>
+</section>
