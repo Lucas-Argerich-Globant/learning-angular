@@ -1,6 +1,7 @@
 import { Routes } from '@angular/router';
 import { Counter } from './counter/counter';
 import { ComputedNames } from './computed-names/computed-names';
+import { Users } from './users/users';
 
 export const routes: Routes = [
   {
@@ -10,5 +11,9 @@ export const routes: Routes = [
   {
     path: 'computed-names',
     component: ComputedNames
+  },
+  {
+    path: 'users',
+    component: Users
   }
 ];
